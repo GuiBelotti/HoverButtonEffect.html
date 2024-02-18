@@ -2,11 +2,11 @@
   --responsiveUnit: calc(1vmin + 1vmax);
 
   --text: #ffffff;
-  --wall: #000000;
+  --wall: #1b1a1a;
 
-  --primary: #3880ff;
+  --primary: #ffffff;
   --secondary: #3dc2ff;
-  --tertiary: #5260ff;
+  --tertiary: #ffffff;
   --success: #2dd36f;
   --warning: #ffc409;
   --danger: #eb445a;
@@ -63,7 +63,7 @@ h1 {
 
 h2 {
   font-size: calc(var(--responsiveUnit) * 1.1);
-  color: #000000;
+  color: #ffffff;
   font-weight: bolder;
   z-index: 2;
   position: relative;
@@ -77,6 +77,77 @@ h2 {
 
   h2 {
     font-size: calc(var(--responsiveUnit) * 3);
+  }
+}
+
+.rowButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: top;
+  width: 50%;
+}
+
+.Button {
+  --animationParams: 1s ease-in-out;
+  --buttonHeight: 100px;
+  --buttonBorderSize: calc(var(--buttonHeight) * 0.06);
+  --buttonBorderOffset: 10px;
+
+  position: relative;
+  height: var(--buttonHeight);
+  width: 100px;
+}
+
+.Button>* {
+  transition: var(--animationParams);
+}
+
+.Button::before {
+  content: "";
+  position: absolute;
+  top: calc(0% - var(--buttonBorderSize) - var(--buttonBorderOffset));
+  left: 0;
+  width: 100%;
+  height: var(--buttonBorderSize);
+  background-color: var(--iconFillColor);
+  border-radius: 40px;
+  z-index: 1;
+  transition: var(--animationParams);
+}
+
+.iconButton {
+  position: absolute;
+  overflow: hidden;
+  height: var(--buttonHeight);
+  width: 100px;
+  fill: grey;
+}
+
+.iconButton.top {
+  height: 0;
+}
+
+.Button:hover .iconButton.top {
+  height: var(--buttonHeight);
+  fill: var(--iconFillColor);
+}
+
+.Button:hover::before {
+  top: calc(100% + var(--buttonBorderOffset));
+}
+
+.columnOfWidgets {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 0;
+}
+
+.columnOfWidgets:hover {
+  .retangulo::before {
+    transform: translateY(100px);
   }
 }
 
